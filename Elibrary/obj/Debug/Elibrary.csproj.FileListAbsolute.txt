@@ -1,0 +1,13 @@
+C:\Users\Markell\source\repos\Elibrary\Elibrary\bin\Debug\ELibrary.exe.config
+C:\Users\Markell\source\repos\Elibrary\Elibrary\bin\Debug\ELibrary.exe
+C:\Users\Markell\source\repos\Elibrary\Elibrary\bin\Debug\ELibrary.pdb
+C:\Users\Markell\source\repos\Elibrary\Elibrary\bin\Debug\EntityFramework.dll
+C:\Users\Markell\source\repos\Elibrary\Elibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Markell\source\repos\Elibrary\Elibrary\bin\Debug\EntityFramework.xml
+C:\Users\Markell\source\repos\Elibrary\Elibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Markell\source\repos\Elibrary\Elibrary\obj\Debug\Elibrary.csprojResolveAssemblyReference.cache
+C:\Users\Markell\source\repos\Elibrary\Elibrary\obj\Debug\Elibrary.csproj.CoreCompileInputs.cache
+C:\Users\Markell\source\repos\Elibrary\Elibrary\obj\Debug\ELibrary.exe
+C:\Users\Markell\source\repos\Elibrary\Elibrary\obj\Debug\ELibrary.pdb
+C:\Users\Markell\source\repos\Elibrary\Elibrary\bin\Debug\ConsolePasswordMasker.dll
+C:\Users\Markell\source\repos\Elibrary\Elibrary\bin\Debug\ConsolePasswordMasker.xml
