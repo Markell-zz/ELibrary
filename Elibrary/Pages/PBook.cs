@@ -39,7 +39,7 @@ namespace ELibrary
 
                 for (int i = 0; i < EExemplarAmount; i++)
                 {
-                    Console.WriteLine("Введите номер экземпляра");
+                    Console.Write("Введите номер экземпляра {0} > ",i+1);
                     string EExemplar = Console.ReadLine();
                     Exemplar exemplars = new Exemplar { ExemplarNumber = EExemplar, Book = books, ExemplarStatus = "In Stock" };
                     db.Exemplars.Add(exemplars);
@@ -58,11 +58,11 @@ namespace ELibrary
 			using (TablesContext db = new TablesContext())
 			{
                 var book = db.Books;
-				Console.WriteLine("Список всех книг:");
+                Console.WriteLine("Список всех книг:");
                 var table = new ConsoleTable("Id", "Название", "Автор");
                 foreach (Book b in book)
                 {
-                    table.AddRow(b.Id, b.BookName, b.BookAuthor);
+                        table.AddRow(b.Id, b.BookName, b.BookAuthor);
                 }
                 table.Write();
             }
@@ -124,16 +124,54 @@ namespace ELibrary
 			{
                 Book book = db.Books.Find(id);
                 var genre = db.Genres.Where(g => g.Id == id).FirstOrDefault();
+                var tryexemplar = db.Exemplars.Where(e => e.Id == id).FirstOrDefault();
                 var exemplar = db.Exemplars.Where(e => e.Id == id).FirstOrDefault();
 
-                Console.WriteLine("Название книги:        "+book.BookName);
-                Console.WriteLine("Автор книги:            " + book.BookAuthor);
-                Console.WriteLine("Жанр книги:             " + genre.Name);
-                Console.WriteLine("Издатель книги:         " + book.Publisher);
-                Console.WriteLine("Год издания книги:      " + book.YearOfPublish);
-                Console.WriteLine("Номер экземпляра книги: " + exemplar.ExemplarNumber);
+                    Console.WriteLine("Название книги:         " + book.BookName);
+                    Console.WriteLine("Автор книги:            " + book.BookAuthor);
+                    Console.WriteLine("Жанр книги:             " + genre.Name);
+                    Console.WriteLine("Издатель книги:         " + book.Publisher);
+                    Console.WriteLine("Год издания книги:      " + book.YearOfPublish);
+                    Console.WriteLine("Номер экземпляра книги: " + exemplar.ExemplarNumber);
             }
 		}
+
+        public void FindByGenre(string GenreName)
+        {
+            using (TablesContext db = new TablesContext())
+            {
+                var book = db.Books.Where(b => b.Genre.Name == GenreName).FirstOrDefault();
+                var genre = db.Genres.Where(g => g.Name == GenreName).FirstOrDefault();
+                try
+                {
+                    Console.WriteLine("Название книги:         " + book.BookName);
+                    Console.WriteLine("Автор книги:            " + book.BookAuthor);
+                    Console.WriteLine("Жанр книги:             " + genre.Name);
+                    Console.WriteLine("Издатель книги:         " + book.Publisher);
+                    Console.WriteLine("Год издания книги:      " + book.YearOfPublish);
+                }
+                catch (Exception e) { Console.WriteLine("Книга не найдена"); }
+            }
+        }
+
+        public void FindByName(string BookName)
+        {
+            using (TablesContext db = new TablesContext())
+            {
+                var book = db.Books.Where(b => b.BookName == BookName).FirstOrDefault();
+
+                try
+                {
+                    Console.WriteLine("Название книги:         " + book.BookName);
+                    Console.WriteLine("Автор книги:            " + book.BookAuthor);
+                    //Console.WriteLine("Жанр книги:             " + book.Genre.Name);
+                    Console.WriteLine("Издатель книги:         " + book.Publisher);
+                    Console.WriteLine("Год издания книги:      " + book.YearOfPublish);
+                }
+                catch (Exception e) { Console.WriteLine("Книга не найдена"); }
+            }
+        }
+
         public Genre FindGenre(string generename)
         {
             using (TablesContext db = new TablesContext())

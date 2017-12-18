@@ -56,7 +56,7 @@
     <Compile Include="DB\Tables.cs" />
     <Compile Include="DB\TablesContext.cs" />
     <Compile Include="Pages\PBook.cs" />
-    <Compile Include="Pages\PExemplar.cs" />
+    <Compile Include="Pages\PTakenBook.cs" />
     <Compile Include="Pages\PUser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

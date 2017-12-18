@@ -46,6 +46,41 @@ namespace ELibrary.Pages
             }
         }
 
+        public void AddLibrarian()
+        {
+            string ELogin;
+            string EPassword;
+            string EFirstName;
+            string ELastName;
+            string EPatronymicName;
+            string EPhone;
+            string EAdress;
+
+            Console.WriteLine("Введите логин");
+            ELogin = Console.ReadLine();
+            Console.WriteLine("Введите пароль");
+            EPassword = Console.ReadLine();
+            Console.WriteLine("Введите имя");
+            EFirstName = Console.ReadLine();
+            Console.WriteLine("Введите фамилию");
+            ELastName = Console.ReadLine();
+            Console.WriteLine("Введите отчество");
+            EPatronymicName = Console.ReadLine();
+            Console.WriteLine("Введите номер телефона");
+            EPhone = Console.ReadLine();
+            Console.WriteLine("Введите адрес проживания");
+            EAdress = Console.ReadLine();
+
+            using (TablesContext db = new TablesContext())
+            {
+                // добавляем их в бд
+                Librarian librarian = new Librarian { LibLogin = ELogin, LibPassword = EPassword, LibFirstName = EFirstName, LibLastName = ELastName, LibPatronymicName = EPatronymicName, LibAdress = EAdress, LibPhone = EPhone };
+                db.Librarians.Add(librarian);
+                db.SaveChanges();
+                Console.WriteLine("Объекты успешно сохранены");
+            }
+        }
+
         public void ShowStudent()
         {
 
@@ -107,12 +142,64 @@ namespace ELibrary.Pages
           }
         }
 
+        public void EditLibrarian(int id)
+        {
+            string ELogin;
+            string EPassword;
+            string EFirstName;
+            string ELastName;
+            string EPatronymicName;
+            string EPhone;
+            string EAdress;
+            using (TablesContext db = new TablesContext())
+            {
+                Librarian librarianId = db.Librarians.Find(id);
+
+                Console.Write("Изменить логин \n {0} -> ", librarianId.LibLogin);
+                ELogin = Console.ReadLine();
+                Console.Write("Изменить пароль \n {0} -> ", librarianId.LibPassword);
+                EPassword = Console.ReadLine();
+                Console.Write("Изменить имя \n {0} -> ", librarianId.LibFirstName);
+                EFirstName = Console.ReadLine();
+                Console.Write("Изменить фамилию \n {0} -> ", librarianId.LibLastName);
+                ELastName = Console.ReadLine();
+                Console.Write("Изменить отчество \n {0} -> ", librarianId.LibPatronymicName);
+                EPatronymicName = Console.ReadLine();
+                Console.Write("Изменить номер телефона \n {0} -> ", librarianId.LibPhone);
+                EPhone = Console.ReadLine();
+                Console.Write("Изменить адрес проживания \n {0} -> ", librarianId.LibAdress);
+                EAdress = Console.ReadLine();
+
+                librarianId.LibLogin = ELogin;
+                librarianId.LibPassword = EPassword;
+                librarianId.LibFirstName = EFirstName;
+                librarianId.LibLastName = ELastName;
+                librarianId.LibPatronymicName = EPatronymicName;
+                librarianId.LibAdress = EAdress;
+                librarianId.LibPhone = EPhone;
+                db.SaveChanges();
+
+                Console.WriteLine("Объекты успешно сохранены\n");
+            }
+        }
+
         public void RemoveStudent(int id)
         {
             using (TablesContext db = new TablesContext())
             {
                 Student student = db.Students.Find(id);
                 db.Students.Remove(student);
+                db.SaveChanges();
+                Console.WriteLine("Данные успешно удалены");
+            }
+        }
+
+        public void RemoveLibrarian(int id)
+        {
+            using (TablesContext db = new TablesContext())
+            {
+                Librarian librarian = db.Librarians.Find(id);
+                db.Librarians.Remove(librarian);
                 db.SaveChanges();
                 Console.WriteLine("Данные успешно удалены");
             }
@@ -131,6 +218,21 @@ namespace ELibrary.Pages
                 Console.WriteLine("Номер читательского билета: " + student.StudCardNumber);
                 Console.WriteLine("Номер телефона:             " + student.StudPhone);
                 Console.WriteLine("Адрес:                      " + student.StudAdress);
+            }
+        }
+
+        public void ShowLibrarian(int id)
+        {
+            using (TablesContext db = new TablesContext())
+            {
+                Librarian librarian = db.Librarians.Find(id);
+
+                Console.WriteLine("Логин:                      " + librarian.LibLogin);
+                Console.WriteLine("Имя:                        " + librarian.LibFirstName);
+                Console.WriteLine("Фамилия:                    " + librarian.LibLastName);
+                Console.WriteLine("Отчество:                   " + librarian.LibPatronymicName);
+                Console.WriteLine("Номер телефона:             " + librarian.LibPhone);
+                Console.WriteLine("Адрес:                      " + librarian.LibAdress);
             }
         }
 

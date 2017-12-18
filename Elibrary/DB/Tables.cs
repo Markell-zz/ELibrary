@@ -19,6 +19,18 @@ public class Student
     }
 }
 
+public class Librarian
+{
+    public int Id { get; set; }
+    public string LibLogin { get; set; }
+    public string LibPassword { get; set; }
+    public string LibFirstName { get; set; }
+    public string LibLastName { get; set; }
+    public string LibPatronymicName { get; set; }
+    public string LibAdress { get; set; }
+    public string LibPhone { get; set; }
+}
+
 public class TakenBook
 {
     public int    Id         { get; set; }

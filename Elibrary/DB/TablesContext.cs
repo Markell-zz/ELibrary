@@ -14,6 +14,7 @@ namespace ELibrary.DB
 		public DbSet<Exemplar>  Exemplars  { get; set; }
 		public DbSet<Book>      Books      { get; set; }
         public DbSet<Student>   Students   { get; set; }
+        public DbSet<Librarian> Librarians { get; set; }
         public DbSet<TakenBook> TakenBooks { get; set; }
     }
 }
