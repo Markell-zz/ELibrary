@@ -21,7 +21,7 @@ namespace ELibrary
             PBook BooksPage = new PBook();
             PUser UsersPage = new PUser();
             PTakenBook TnBooksPage = new PTakenBook();
-
+            Console.Clear();
             Console.Write("\n Введие логин:  ");
             string login = Console.ReadLine();
             Console.Write(" Введие пароль: ");
@@ -120,7 +120,7 @@ namespace ELibrary
                                 {
                                     int eId;
                                     Console.WriteLine("\n");
-                                    Console.Write("Введите Id библиотекаря:> ");
+                                    Console.Write("Введите Id студента:> ");
                                     eId = Convert.ToInt32(Console.ReadLine());
                                     UsersPage.RemoveStudent(eId);
                                 }
@@ -149,8 +149,15 @@ namespace ELibrary
                                     Console.WriteLine("\n");
                                 }
                                 break;
+                            case "get librarian list":
+                                {
+                                    Console.WriteLine("\n");
+                                    UsersPage.ShowLibrarian();
+                                    Console.WriteLine("\n");
+                                }
+                                break;
 
-                            case "get book bi":
+                            case "get book info":
                                 {
                                     Console.WriteLine("\n");
                                     Console.Write("Введите номер книги:> ");
@@ -198,7 +205,7 @@ namespace ELibrary
                                     Console.WriteLine("\n");
                                     Console.Write("Введите название книги > ");
                                     string name = Console.ReadLine();
-                                    BooksPage.FindByName(name);
+                                    BooksPage.FindN(name);
                                     Console.WriteLine("\n");
                                 }
                                 break;
@@ -208,7 +215,7 @@ namespace ELibrary
                                     Console.WriteLine("\n");
                                     Console.Write("Введите жанр книги > ");
                                     string genre = Console.ReadLine();
-                                    BooksPage.FindByGenre(genre);
+                                    BooksPage.FindG(genre);
                                     Console.WriteLine("\n");
                                 }
                                 break;
@@ -223,23 +230,26 @@ namespace ELibrary
                                 {
                                     string[] commands = new string[]
                                     {
-                                        "\n  help ------------- список каманд",
-                                        "  add book --------- добавить новую книгу",
-                                        "  add student ------ добавить нового студента",
-                                        "  add librarian ---- добавить нового библиотекаря",
-                                        "  remove book ------ удалить книгу по Id",
-                                        "  remove student --- удалить студента по Id",
-                                        "  remove librarian - удалить библиотекаря по Id",
-                                        "  edit book -------- изменить книгу по Id",
-                                        "  edit student ----- изменить студента по Id",
-                                        "  get book list ---- просмотреть список всех книг",
-                                        "  get student list - просмотреть список всех студентов",
-                                        "  get tkbook list -- просмотреть список книг по Id студента",
-                                        "  take book  ------- взять книгу по Id",
-                                        "  reterb book  ----  возвратить книгу по Id",
-                                        "  get book info ---- просмотреть книгу по Id",
-                                        "  get student  ----- просмотреть студента по Id",
-                                        "  exit ------------- выйти из программы\n"
+                                        "\n  help --------------- список каманд",
+                                        "  add book ----------- добавить новую книгу",
+                                        "  add student -------- добавить нового студента",
+                                        "  add librarian ------ добавить нового библиотекаря",
+                                        "  remove book -------- удалить книгу по Id",
+                                        "  remove student ----- удалить студента по Id",
+                                        "  remove librarian --- удалить библиотекаря по Id",
+                                        "  edit book ---------- изменить книгу по Id",
+                                        "  edit student ------- изменить студента по Id",
+                                        "  get book list ------ просмотреть список всех книг",
+                                        "  get student list --- просмотреть список всех студентов",
+                                        "  get tkbook list ---- просмотреть список книг по Id студента",
+                                        "  get librarian list - просмотреть список всех бибдиотекарей",
+                                        "  take book  --------- взять книгу по Id",
+                                        "  reterb book  ------  возвратить книгу по Id",
+                                        "  get book info ------ просмотреть книгу по Id",
+                                        "  get student  ------- просмотреть студента по Id",
+                                        "  get librarian  ----- просмотреть библиотекаря по Id",
+                                        "  find by name  ------ найти книгу по названию",
+                                        "  exit --------------- выйти из программы\n"
                                     };
                                     foreach (var str in commands)
                                         Console.WriteLine(str);
@@ -489,7 +499,8 @@ namespace ELibrary
                                 break;
                         }
                     }
-                }
+                } Console.WriteLine("Данные введены неверно!");
+                Console.ReadKey();
             }
         }
 
