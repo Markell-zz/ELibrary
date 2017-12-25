@@ -97,22 +97,6 @@ namespace ELibrary.Pages
             }
         }
 
-        public void ShowLibrarian()
-        {
-
-            using (TablesContext db = new TablesContext())
-            {
-                var librarians = db.Librarians;
-                var table = new ConsoleTable("Id", "Логин", "Имя", "Фамилия", "Отчество");
-                Console.WriteLine("Список всех пользователей:\n");
-                foreach (Librarian l in librarians)
-                {
-                    table.AddRow(l.Id, l.LibFirstName, l.LibFirstName, l.LibLastName, l.LibPatronymicName);
-                }
-                table.Write();
-            }
-        }
-
         public void EditStudent(int id)
         {
             string ELogin;
